@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+			
+{% block main %} 
+	<div id="content" class="fullProjects">
+		<div id="projects">
+			<ul id="filterNav" class="clearfix">
+				<li>
+					<a class="selected" data-filter="*" href="#">全部</a>
+				</li>
+				{% for cat in categories %}
+					<li><a href="#">{{ cat.name }}</a></li>
+				{% endfor %}
+			</ul>
+			<div id="carrega" class="embarque thumbs masonry isotope">
+				{% for entry in entries %}
+					<div id="isotope-item-{{ entry._id }}" class="project small">
+						<a rel="bookmark" href="#"></a>
+						<a href="#">
+							<img class="thumb wp-post-image" width="{{ entry.width }}" height="{{ entry.height }}" 
+								src="/static/uploads/{{ entry.thumb }}">
+						</a>
+						<span class="title"><span>{{ entry.title }}</span></span>
+					</div>
+				{% endfor %}
+			</div>
+			{% if entries %}
+				<a id="tstMediaLoadMore" href="javascript:void(0);" class="button">加载更多</a>
+			{% endif %}
+			<script>
+				window.Paging = { "page":{{ page }}, "cat": "{{ cat }}" };
+			</script>
+		</div>
+	</div>
+{% endblock %}

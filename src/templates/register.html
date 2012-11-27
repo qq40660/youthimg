@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+			
+{% block main %} 
+	<div id="register" style="height:400px;">
+		<form action="{{ url_for('register') }}" method="post">
+			{% if error %}
+				<p style="color:red;">{{ error }}</p>
+			{% endif %}
+			<p>帐号: <input name="username" size="30"/></p>
+			<p>密码: <input name="password" type="password" size="30"/></p>
+			<p>邮箱: <input name="email" size="30"/></p>
+			<p>
+				<input type="submit" value="注册"/>
+			</p>
+		</form>
+	</div>
+{% endblock %}

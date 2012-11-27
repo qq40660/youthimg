@@ -1,0 +1,16 @@
+{% extends 'base.html' %}
+			
+{% block main %} 
+	<div id="login" style="height:400px;">
+		<form action="{{ url_for('login') }}" method="post">
+			{% if error %}
+				<p style="color:red;">{{ error }}</p>
+			{% endif %}
+			<p>帐号: <input name="username" size="30"/></p>
+			<p>密码: <input name="password" type="password" size="30"/></p>
+			<p>
+				<input type="submit" value="登录"/>
+			</p>
+		</form>
+	</div>
+{% endblock %}

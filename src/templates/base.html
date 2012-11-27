@@ -1,0 +1,98 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>youthing</title>
+    <link rel="stylesheet" type="text/css" href="{{ url_for('static', filename='css/style.css') }}"/>
+    <script type="text/javascript" src="{{ url_for('static', filename='js/jquery.js') }}"></script>
+</head>
+
+<body>
+	<div id="container">
+		<div id="header">
+			<div class="inside clearfix">
+				<div id="minhapage">
+                    <div id="head">
+                        <h1 id="logo">
+                            <a href="/">
+                            <img width="219" height="144" alt="UP Magazine - TAP Portugal" src="{{ url_for('static', filename='images/logo.jpg') }}">
+                            </a>
+                        </h1>
+                    </div>
+                    <div class="headerright ">
+                        <div id="headerright-lang" class="clearfix">
+                            <div id="footer_language_list">
+                                <ul>
+                                    {% if session.username %}
+                                    <li>
+                                        <span class="icl_lang_sel_current">{{ session.username }}</span>
+                                    </li>
+                                    <li>
+                                        <span>&nbsp;/&nbsp;</span>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('upload') }}"><span class="icl_lang_sel_current">上传图片</span></a>
+                                    </li>
+                                    <li>
+                                        <span>&nbsp;/&nbsp;</span>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('logout') }}"><span class="icl_lang_sel_current">退出</span></a>
+                                    </li>
+                                    {% else %}
+                                    <li>
+                                        <a href="{{ url_for('login') }}"><span class="icl_lang_sel_current">登录</span></a>
+                                    </li>
+                                    <li>
+                                        <span>&nbsp;/&nbsp;</span>
+                                    </li>
+                                    <li>
+                                        <a href="{{ url_for('register') }}"><span class="icl_lang_sel_current">注册</span></a>
+                                    </li>
+                                    {% endif %}
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div id="masthead">
+                    <ul id="nav" class="clearfix">
+                        &nbsp;
+                    </ul>
+                </div>
+			</div>
+		</div>
+		<div id="main" class="clearfix">
+			{% block main %}  {% endblock %}
+		</div>
+		<div id="footer">
+        	<div class="inside clearfix">
+            	<div class="secondary clearfix">
+                    <div class="left">
+                    	<p>
+                            &copy; 2012
+                            <a href="#"><strong>youthing.com</strong></a>
+                            All Rights Reserved.
+                        </p>
+                    </div>
+                    <div class="right">
+                        <p>
+                            <a href="">首页</a>
+                            /
+                            <a href="">关于我们</a>
+                            /
+                            <a href="">帮助中心</a>
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+	</div>
+	<script src="{{ url_for('static', filename='js/jquery.scrollTo.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/jquery.prettyPhoto.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/jquery.isotope.min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/jquery.ui.totop.js') }}" type="text/javascript" </script>
+    <script src="{{ url_for('static', filename='js/jquery.flexslider-min.js') }}" type="text/javascript"></script>
+    <script src="{{ url_for('static', filename='js/media.js')}}" type="text/javascript"></script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+{% extends 'base.html' %}
+
+{% block main %} 
+	<div id="upload">
+		<form action="{{ url_for('upload')}}" method="post" enctype="multipart/form-data">
+			{% with messages = get_flashed_messages(with_categories=true) %}
+				{% if messages %}
+					{% for category, message in messages %}
+						<p style="color:red;">{{ message }}</p>
+					{% endfor %}
+				{% endif %}
+			{% endwith %} 
+			<p>上传图片: <input  type="file" name="upload_img"/></p>
+			<p>图片标题: <input  name="title" size="30"/></p>
+			<p>图片链接: <input  name="link" size="30"/></p>
+			<p>图片分类: <select name="categories">
+				{% for cat in categories %}
+					<option value="{{ cat.name }}">{{ cat.name }}</option>
+				{% endfor %}
+			</select></p>
+			<p>图片标签: <input name="tags" size="30"/></p>
+			<p>图片描述: <textarea name="description"></textarea></p>
+			<p><input type="submit" value="我要提交"/></p>
+		</form>
+	</div>
+{% endblock %}
